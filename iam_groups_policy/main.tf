@@ -4,6 +4,6 @@ resource "template_file" "policy_file" {
 
 resource "aws_iam_group_policy" "iam_group_policy" {
   name  = "${var.name}"
-  group = "${var.group_id}"
-  policy = "${template_file.policy.rendered}"
+  group = "${var.group_name}"
+  policy = "${template_file.policy_file.rendered}"
 }
