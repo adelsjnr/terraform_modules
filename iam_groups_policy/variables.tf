@@ -1,3 +1,3 @@
 variable "name" {}
-variable "group_id" {}
+variable "group_name" {}
 variable "policy_file" {}
