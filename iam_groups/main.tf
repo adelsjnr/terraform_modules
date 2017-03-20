@@ -7,12 +7,6 @@ resource "template_file" "policy_file" {
     filename = "${var.policy_file}"
 }
 
-#resource "aws_iam_group_policy" "iam_group_policy" {
-#  name  = "${var.policy_name}"
-#  group = "${aws_iam_group.iam_group.name}"
-#  policy = "${template_file.policy_file.rendered}"
-#}
-
 resource "aws_iam_group_membership" "group_membership" {
   name = "${var.membership_name}"
   users = "${var.usernames}"
