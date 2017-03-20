@@ -18,3 +18,9 @@ resource "aws_iam_group_membership" "group_membership" {
   users = "${var.usernames}"
   group = "${aws_iam_group.iam_group.name}"
 }
+
+resource "aws_iam_policy" "iam_policy" {
+  name  = "${var.iam_policy_name}"
+  path  = "/"
+  policy = "${template_file.policy_file.rendered}"
+}
