@@ -4,7 +4,7 @@ resource "aws_iam_group" "iam_group" {
 }
 
 data "template_file" "policy_file" {
-    filename = "${var.policy_file}"
+    template = "${var.policy_file}"
 }
 
 #resource "template_file" "policy_file" {
