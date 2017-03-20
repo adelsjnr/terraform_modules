@@ -3,13 +3,13 @@ resource "aws_iam_group" "iam_group" {
   path = "/users/"
 }
 
-data "template_file" "policy_file" {
-    template = "${var.policy_file}"
-}
-
-#resource "template_file" "policy_file" {
-#    filename = "${var.policy_file}"
+#data "template_file" "policy_file" {
+#    template = "${var.policy_file}"
 #}
+
+resource "template_file" "policy_file" {
+    filename = "${var.policy_file}"
+}
 
 resource "aws_iam_group_membership" "group_membership" {
   name = "${var.membership_name}"
@@ -20,7 +20,7 @@ resource "aws_iam_group_membership" "group_membership" {
 resource "aws_iam_policy" "iam_policy" {
   name  = "${var.iam_policy_name}"
   path  = "/"
-  policy = "${data.template_file.policy_file.rendered}"
+  policy = "${emplate_file.policy_file.rendered}"
 }
 
 resource "aws_iam_group_policy_attachment" "attaching" {
